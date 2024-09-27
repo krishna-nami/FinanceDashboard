@@ -6,6 +6,8 @@ import dotenv from "dotenv";
 import helmet from "helmet";
 import morgan from "morgan";
 import kpiRoutes from "./routes/kpi.js";
+import { kpis } from "./data/data.js";
+import KPI from "./models/KPI.js";
 // dFIAZDSqLIUobsuW
 
 dotenv.config();
@@ -30,6 +32,9 @@ mongoose
         `The Server is successfully connected using the ${PORT} address`
       );
     });
+    //for insert data for initial seeding
+    // await mongoose.connection.db.dropDatabase();
+    // KPI.insertMany(kpis);
   })
   .catch((error) => console.log(`${error} did not connect`));
 
