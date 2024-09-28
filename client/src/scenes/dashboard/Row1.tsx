@@ -6,7 +6,9 @@ import { useGetKpisQuery } from '@/state/api'
 
 const Row1 = () => {
 
+
     const { data } = useGetKpisQuery();
+
     console.log("data:", data)
     return (
         <>
