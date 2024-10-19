@@ -1,6 +1,6 @@
 import BoxHeader from '@/components/BoxHeader'
 import DashboardBox from '@/components/DashboardBox'
-import { useGetKpisQuery } from '@/state/api'
+import { useGetKpisQuery, useGetProductsQuery } from '@/state/api'
 import { useTheme } from '@mui/material'
 import { useMemo } from 'react'
 
@@ -9,11 +9,13 @@ import { CartesianGrid, Legend, Line, LineChart, ResponsiveContainer, Tooltip, X
 
 
 const Row2 = () => {
-    const { data } = useGetKpisQuery();
+    const { data: operationalData } = useGetKpisQuery();
+    const { data: productData } = useGetProductsQuery();
+    console.log("data", productData)
     const { palette } = useTheme();
     const expenses = useMemo(() => {
         return (
-            data && data[0].monthlyData.map(({ month, operationalExpenses, nonOperationalExpenses }) => {
+            operationalData && operationalData[0].monthlyData.map(({ month, operationalExpenses, nonOperationalExpenses }) => {
                 return {
                     name: month.substring(0, 3),
                     operational: operationalExpenses,
@@ -22,7 +24,7 @@ const Row2 = () => {
                 };
             })
         )
-    }, [data])
+    }, [operationalData])
     return (
         <>
             <DashboardBox gridArea="d"> <BoxHeader title="Operational vs non operational"
