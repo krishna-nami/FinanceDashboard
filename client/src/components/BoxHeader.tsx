@@ -11,9 +11,9 @@ type Props = {
 }
 
 const BoxHeader = ({ icon, title, subtitle, sideText }: Props) => {
-    const { palette } = useTheme()
+    const { palette } = useTheme();
     return (
-        <FlexBetwen color={palette.grey[400]} margin='1.5rem 1rem 0 1 rem'>
+        <FlexBetwen color={palette.grey[400]} margin='1.5rem 1rem 0 1rem'>
             <FlexBetwen>
                 {icon}
                 <Box width='100%'>
