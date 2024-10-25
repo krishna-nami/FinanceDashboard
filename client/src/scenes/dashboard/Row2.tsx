@@ -5,7 +5,7 @@ import { useGetKpisQuery, useGetProductsQuery } from '@/state/api'
 import { Box, Typography, useTheme } from '@mui/material'
 import { useMemo } from 'react'
 
-import { CartesianGrid, Cell, Legend, Line, LineChart, Pie, PieChart, ResponsiveContainer, Scatter, ScatterChart, Tooltip, XAxis, YAxis, ZAxis } from 'recharts'
+import { CartesianGrid, Cell, Line, LineChart, Pie, PieChart, ResponsiveContainer, Scatter, ScatterChart, Tooltip, XAxis, YAxis, ZAxis } from 'recharts'
 
 
 const pieData = [{ name: "gropu a", value: 600 },
@@ -27,7 +27,7 @@ const Row2 = () => {
                 };
             })
         )
-    }, [operationalData])
+    }, [productData])
     const expenses = useMemo(() => {
         return (
             operationalData && operationalData[0].monthlyData.map(({ month, operationalExpenses, nonOperationalExpenses }) => {
